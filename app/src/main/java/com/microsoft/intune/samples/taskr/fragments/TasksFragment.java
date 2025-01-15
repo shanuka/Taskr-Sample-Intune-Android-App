@@ -21,7 +21,7 @@ import com.microsoft.intune.mam.policy.SaveLocation;
 import com.microsoft.intune.samples.taskr.R;
 import com.microsoft.intune.samples.taskr.authentication.AppSettings;
 import com.microsoft.intune.samples.taskr.room.TaskListAdapter;
-import com.microsoft.intune.samples.taskr.room.RoomManager;
+//import com.microsoft.intune.samples.taskr.room.RoomManager;
 import com.microsoft.intune.samples.taskr.utils.Printer;
 import com.microsoft.intune.samples.taskr.utils.SaveObserver;
 
@@ -42,7 +42,7 @@ public class TasksFragment extends Fragment {
         displayList.setAdapter(adapter);
 
         // Define the observer that will notify the adapter of changes
-        RoomManager.getAllTasks().observe(getViewLifecycleOwner(), adapter::setList);
+       // RoomManager.getAllTasks().observe(getViewLifecycleOwner(), adapter::setList);
 
         // Set up the click handlers
         rootView.findViewById(R.id.tasks_nav_save_icon).setOnClickListener(saveListener);
@@ -78,8 +78,8 @@ public class TasksFragment extends Fragment {
             Activity activity = getActivity();
             Context context = getContext();
             if (activity != null && context != null) {
-                RoomManager.getTaskDocument(context, this, true,
-                        new SaveObserver(context, activity, getTargetRequestCode()));
+//                RoomManager.getTaskDocument(context, this, true,
+//                        new SaveObserver(context, activity, getTargetRequestCode()));
             } else {
                 toastErrorStr(R.string.err_not_active);
             }

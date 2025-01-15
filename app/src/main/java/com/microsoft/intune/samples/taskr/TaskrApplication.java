@@ -14,7 +14,7 @@ import com.microsoft.intune.mam.policy.MAMEnrollmentManager;
 import com.microsoft.intune.mam.policy.notification.MAMEnrollmentNotification;
 import com.microsoft.intune.mam.policy.notification.MAMNotificationType;
 import com.microsoft.intune.samples.taskr.authentication.AuthenticationCallback;
-import com.microsoft.intune.samples.taskr.room.RoomManager;
+//import com.microsoft.intune.samples.taskr.room.RoomManager;
 
 /**
  * Specifies what happens when the app is launched and terminated.
@@ -27,7 +27,7 @@ public class TaskrApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Initialize the tasks database
-        RoomManager.initRoom(getApplicationContext());
+//        RoomManager.initRoom(getApplicationContext());
 
         // Registers a MAMAuthenticationCallback, which will try to acquire access tokens for MAM.
         // This is necessary for proper MAM integration.
@@ -67,6 +67,6 @@ public class TaskrApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         // Close the database connection to prevent memory leaks
-        RoomManager.closeRoom();
+//        RoomManager.closeRoom();
     }
 }

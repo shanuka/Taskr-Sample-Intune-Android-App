@@ -82,7 +82,7 @@ public class TaskListAdapter extends BaseAdapter implements ListAdapter {
 
         // Set the check button listener. It will just call the complete method on this task.
         ImageButton completeButton = view.findViewById(R.id.task_list_complete_button);
-        completeButton.setOnClickListener((final View v) -> RoomManager.completeTask(task));
+//        completeButton.setOnClickListener((final View v) -> RoomManager.completeTask(task));
 
         return view;
     }

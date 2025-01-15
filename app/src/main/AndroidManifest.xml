@@ -40,7 +40,7 @@
                 -->
                 <data
                     android:host="com.microsoft.intune.samples.taskr"
-                    android:path="/SignatureHash"
+                    android:path="/NiNUHamtcCifqYlWfOFqAp4Jy4U="
                     android:scheme="msauth" />
             </intent-filter>
         </activity>

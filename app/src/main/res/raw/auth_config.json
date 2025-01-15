@@ -1,7 +1,7 @@
 {
-  "client_id" : "<ClientID>",
+  "client_id" : "74b45596-40e9-438a-ab61-6e202677c3ba",
   "authorization_user_agent" : "DEFAULT",
-  "redirect_uri" : "msauth://com.intune.samples.taskr/<SignatureHash>",
+  "redirect_uri" : "msauth://com.microsoft.intune.samples.taskr/NiNUHamtcCifqYlWfOFqAp4Jy4U%3D",
   "broker_redirect_uri_registered": true,
   "multiple_clouds_supported": true,
   "authorities" : [

@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment;
 
 import com.microsoft.intune.samples.taskr.R;
 import com.microsoft.intune.samples.taskr.room.Task;
-import com.microsoft.intune.samples.taskr.room.RoomManager;
+//import com.microsoft.intune.samples.taskr.room.RoomManager;
 
 
 /**
@@ -87,7 +87,7 @@ public class SubmitFragment extends Fragment {
             toastMessage = R.string.submit_nav_no_description;
         } else {
             // We know the user input is valid, submit it
-            RoomManager.insertTask(new Task(description));
+//            RoomManager.insertTask(new Task(description));
             // Now clear the input field
             descriptionField.setText("");
             toastMessage = R.string.submit_nav_submitted;

@@ -68,10 +68,10 @@ dependencies {
     // Include the MAM SDK
     implementation files('MAMSDK/Microsoft.Intune.MAM.SDK.aar')
 
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+//    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     // Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
+//    testImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 

@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.microsoft.intune.samples.taskr.R;
-import com.microsoft.intune.samples.taskr.room.RoomManager;
+//import com.microsoft.intune.samples.taskr.room.RoomManager;
 
 /**
  * Class that will print the results of a call to RoomManager.
@@ -51,8 +51,8 @@ public class Printer {
         });
 
         // Set the content of the view to be the HTML document we want to print
-        RoomManager.getTaskDocument(mActivity.getApplicationContext(), mLifecycleOwner, false,
-                (String html) -> webView.loadData(html, "text/HTML", "UTF-8"));
+//        RoomManager.getTaskDocument(mActivity.getApplicationContext(), mLifecycleOwner, false,
+//                (String html) -> webView.loadData(html, "text/HTML", "UTF-8"));
     }
 
     private void createWebPrintJob(final WebView webView) {

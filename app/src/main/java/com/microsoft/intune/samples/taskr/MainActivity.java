@@ -5,7 +5,12 @@
 
 package com.microsoft.intune.samples.taskr;
 
+import android.annotation.SuppressLint;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -36,6 +41,8 @@ import com.microsoft.intune.samples.taskr.fragments.TasksFragment;
 import com.microsoft.intune.samples.taskr.fragments.SubmitFragment;
 import com.microsoft.intune.samples.taskr.trustedroots.ui.TrustedRootsFragment;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -67,6 +74,30 @@ public class MainActivity extends AppCompatActivity
             displaySignInView();
         } else {
             displayMainView();
+        }
+
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= 28) {
+                @SuppressLint("WrongConstant")
+                PackageInfo packageInfo = this.getPackageManager().getPackageInfo(
+                        this.getPackageName(),
+                        PackageManager.GET_SIGNING_CERTIFICATES
+                );
+
+                android.content.pm.Signature[] signatures = packageInfo.signingInfo.getApkContentsSigners();
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                if (signatures != null) {
+                    for (android.content.pm.Signature signature : signatures) {
+                        md.update(signature.toByteArray());
+                        String signatureBase64 = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                        Log.d("Signature Base64 Sha", signatureBase64);
+                    }
+                }
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }
 
