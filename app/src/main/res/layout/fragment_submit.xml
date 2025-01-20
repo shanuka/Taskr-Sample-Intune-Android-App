@@ -29,7 +29,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintBottom_toTopOf="@+id/submit_nav_description_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" android:visibility="gone"/>
 
         <EditText
             android:id="@+id/submit_nav_description_text"
@@ -42,7 +42,7 @@
             android:hint="@string/submit_nav_description_placeholder"
             android:inputType="textMultiLine"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/submit_nav_title" />
+            app:layout_constraintTop_toBottomOf="@+id/submit_nav_title" android:visibility="gone"/>
 
         <Button
             android:id="@+id/submit_nav_submit"
@@ -52,6 +52,17 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submit_nav_description_text" android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/submit_nav_submit"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/submit_nav_description_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

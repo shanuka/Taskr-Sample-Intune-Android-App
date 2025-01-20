@@ -1,7 +1,7 @@
 {
   "client_id" : "74b45596-40e9-438a-ab61-6e202677c3ba",
   "authorization_user_agent" : "DEFAULT",
-  "redirect_uri" : "msauth://com.microsoft.intune.samples.taskr/NiNUHamtcCifqYlWfOFqAp4Jy4U%3D",
+  "redirect_uri" : "msauth://com.microsoft.intune.samples.taskr/KqiAf8BKZ96DpMxP2nohI%2BeXeaU%3D",
   "broker_redirect_uri_registered": false,
   "multiple_clouds_supported": true,
   "shared_device_mode_supported": true,

@@ -15,12 +15,20 @@ apply plugin: 'org.jetbrains.kotlin.android'
 apply from: "$rootProject.projectDir/gradle/versions.gradle"
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("Assyst.jks")
+            storePassword = "Assyst123"
+            keyAlias = "Assyst"
+            keyPassword = "Assyst1234"
+        }
+    }
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.microsoft.intune.samples.taskr"
+        applicationId "com.microsoft.intune.samples.taskr.assyst"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 1
+        versionCode 10
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -31,8 +39,20 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig = signingConfigs.getByName("release")
+            buildConfigField(
+                    "String",
+                    "SERVER_URL",
+                    "\"https://test-dev.axiossystems.com/\""
+            )
+
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
+            debuggable false
+            minifyEnabled false
+
         }
     }
     lintOptions {
@@ -41,6 +61,7 @@ android {
     }
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -74,6 +95,7 @@ dependencies {
 //    testImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+   /// implementation 'com.microsoft.intune.mam:intune-mam-android-sdk:9.5.0'
 
 
 

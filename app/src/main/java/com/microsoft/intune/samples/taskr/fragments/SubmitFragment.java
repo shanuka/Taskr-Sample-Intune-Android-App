@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +17,30 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.microsoft.intune.mam.client.app.MAMComponents;
+import com.microsoft.intune.mam.policy.appconfig.MAMAppConfig;
+import com.microsoft.intune.mam.policy.appconfig.MAMAppConfigManager;
 import com.microsoft.intune.samples.taskr.R;
+import com.microsoft.intune.samples.taskr.authentication.AppAccount;
+import com.microsoft.intune.samples.taskr.authentication.AppSettings;
 import com.microsoft.intune.samples.taskr.room.Task;
-//import com.microsoft.intune.samples.taskr.room.RoomManager;
+import com.microsoft.intune.samples.taskr.room.RoomManager;
+
+import java.util.List;
+import java.util.Map;
 
 
 /**
  * A {@link Fragment} subclass that handles the creation of a view of the submit screen.
  */
 public class SubmitFragment extends Fragment {
+
+    private String concat ="";
 
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, final ViewGroup container,
@@ -60,6 +72,36 @@ public class SubmitFragment extends Fragment {
                 description.setText(text);
             }
         }
+
+
+        AppAccount mUserAccount = AppSettings.getAccount(getContext());
+
+        MAMAppConfigManager configManager = MAMComponents.get(MAMAppConfigManager.class);
+//        // Step 2: Get the user's UPN (User Principal Name) - This is required to access the user's app config
+//        val userPrincipalName = enrollmentManager.primaryUser // Automatically retrieves the primary user
+//
+//        // Step 3: Retrieve application configuration for the current user
+//        val appConfig = userPrincipalName?.let { enrollmentManager.getApplicationConfig(it) }
+        String aadid = mUserAccount.getAADID();
+        MAMAppConfig appConfig = configManager.getAppConfigForOID(aadid);
+        // Step 4: Access specific configuration settings from the appConfig map
+        String apiEndpoint = appConfig.getStringForKey("registerAuthenticationCallback", MAMAppConfig.StringQueryType.Any);
+        String enableFeatureX = appConfig.getStringForKey("serverURLManagedRestriction", MAMAppConfig.StringQueryType.Any);
+      //  Log.d("apiEndpoint", apiEndpoint);
+        List<Map<String, String>> list = appConfig.getFullData();
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println("Map " + (i + 1) + ":");
+            Map<String, String> map = list.get(i);
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                System.out.println("  " + entry.getKey() + ": " + entry.getValue());
+                String key = entry.getKey();
+                String value = entry.getValue();
+                concat = "key "+ key+ " value "+ value;
+            }
+        }
+        TextView description = rootView.findViewById(R.id.textView);
+        description.setText("MAMAppConfig "+concat);
 
         return rootView;
     }

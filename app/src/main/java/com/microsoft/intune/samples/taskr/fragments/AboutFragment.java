@@ -44,7 +44,7 @@ public class AboutFragment extends Fragment {
         // Get and show the targeted application configuration
         String currentUser = AppSettings.getAccount(this.getContext()).getAADID();
         MAMAppConfigManager configManager = MAMComponents.get(MAMAppConfigManager.class);
-        MAMAppConfig appConfig = configManager.getAppConfig(currentUser);
+        MAMAppConfig appConfig = configManager.getAppConfigForOID(currentUser);
 
         configText.setText(appConfig == null ? getString(R.string.err_unset)
                 : getString(R.string.about_nav_config_text, appConfig.getFullData().toString()));
