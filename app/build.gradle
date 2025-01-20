@@ -55,10 +55,6 @@ android {
 
         }
     }
-    lintOptions {
-        // Disabled because we don't care if this demo app shows up in a Google Search
-        disable 'GoogleAppIndexingWarning'
-    }
     buildFeatures {
         dataBinding true
         viewBinding true
@@ -67,7 +63,16 @@ android {
         jvmTarget = '1.8'
     }
     packagingOptions {
-        pickFirst 'META-INF/*'
+        jniLibs {
+            pickFirsts += ['META-INF/*']
+        }
+        resources {
+            pickFirsts += ['META-INF/*']
+        }
+    }
+    namespace 'com.microsoft.intune.samples.taskr'
+    lint {
+        disable 'GoogleAppIndexingWarning'
     }
 }
 
