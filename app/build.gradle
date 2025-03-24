@@ -9,20 +9,12 @@ apply plugin: 'com.android.application'
  * https://docs.microsoft.com/en-us/intune/app-sdk-android#replace-classes-methods-and-activities-with-their-mam-equivalent
  * for more information.
  */
-apply plugin: 'com.microsoft.intune.mam'
+//apply plugin: 'com.microsoft.intune.mam'
 apply plugin: 'org.jetbrains.kotlin.android'
 
 apply from: "$rootProject.projectDir/gradle/versions.gradle"
 
 android {
-    signingConfigs {
-        create("release") {
-            storeFile = file("Assyst.jks")
-            storePassword = "Assyst123"
-            keyAlias = "Assyst"
-            keyPassword = "Assyst1234"
-        }
-    }
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.microsoft.intune.samples.taskr.assyst"

@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:8.5.2'
         // Include the MAM build plugin and Javassist, which it depends on
-        classpath "org.javassist:javassist:3.27.0-GA"
+        //classpath "org.javassist:javassist:3.27.0-GA"
         classpath files("app/MAMSDK/com.microsoft.intune.mam.build.jar")
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'
     }

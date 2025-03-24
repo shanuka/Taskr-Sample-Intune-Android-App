@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val appConfig = configManager!!.getAppConfig("serverURL")
             val configText = findViewById<TextView>(R.id.about_nav_config_text)
             configText.text = if (appConfig == null) getString(R.string.err_unset)
-            else getString(R.string.about_nav_config_text, appConfig.fullData.toString())
+            else getString(R.string.about_nav_config_text, appConfig.getAllStringsForKey("serverURL"))
 
             MAMComponents.get(MAMNotificationReceiverRegistry::class.java)!!
                 .registerReceiver(
